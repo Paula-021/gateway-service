@@ -13,7 +13,7 @@ public class GatewayController {
 
     @GetMapping("/forward/Data")
     public ResponseEntity<?> forwardData(@RequestParam Long id, @RequestParam String code, @RequestParam String gprmc) {
-        String ipDestino = "http://200.123.156.18";
+        String ipDestino = "200.123.156.18";
         int portaDestino = 5004;
 
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -23,7 +23,7 @@ public class GatewayController {
 
             InetAddress ipDestinoInet = InetAddress.getByName(ipDestino);
 
-            DatagramPacket packet = new DatagramPacket(dados, dados.length, ipDestinoInet, portaDestino);
+            DatagramPacket packet = new DatagramPacket(dados, dados.length, ipDestinoInet, portaDestino); //pacote UDP
 
             socket.send(packet);
 
